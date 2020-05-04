@@ -7,6 +7,9 @@ import { NavComponent } from './Shared/nav/nav.component';
 import { HomeComponent } from './Shared/home/home.component';
 import { RegisterComponent } from './Shared/register/register.component'
 import { ErrorInterceptorProvider } from './error.interceptor';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +18,7 @@ import { ErrorInterceptorProvider } from './error.interceptor';
     RegisterComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule
+    BrowserModule, HttpClientModule, FormsModule,BrowserAnimationsModule,BsDropdownModule.forRoot()
   ],
 
   providers: [
