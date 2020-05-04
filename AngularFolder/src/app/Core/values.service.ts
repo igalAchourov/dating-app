@@ -12,6 +12,7 @@ export class ValuesService {
 
 
 getValues():Observable<any>{
+  
   return this.http.get<any>("http://localhost:5000/api/values");
     
 }
