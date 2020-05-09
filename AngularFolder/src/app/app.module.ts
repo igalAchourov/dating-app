@@ -9,16 +9,31 @@ import { RegisterComponent } from './Shared/register/register.component'
 import { ErrorInterceptorProvider } from './error.interceptor';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemberListComponent } from './Shared/member-list/member-list.component';
+import { ListsComponent } from './Shared/lists/lists.component';
+import { MessagesComponent } from './Shared/messages/messages.component';
+import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './router';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MemberListComponent,
+    ListsComponent,
+    MessagesComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule,BrowserAnimationsModule,BsDropdownModule.forRoot()
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
 
   providers: [
