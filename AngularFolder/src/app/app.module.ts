@@ -8,13 +8,25 @@ import { HomeComponent } from './Shared/home/home.component';
 import { RegisterComponent } from './Shared/register/register.component'
 import { ErrorInterceptorProvider } from './error.interceptor';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MemberListComponent } from './Shared/member-list/member-list.component';
+import { MemberListComponent } from './Shared/members/member-list/member-list.component';
 import { ListsComponent } from './Shared/lists/lists.component';
 import { MessagesComponent } from './Shared/messages/messages.component';
 import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './router';
+import { MemberCardComponent } from './Shared/members/member-card/member-card.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { MemberDetailComponent } from './Shared/members/member-detail/member-detail.component';
+import { MemberDetailResolver } from './resolvers/member-detail-resolver';
+import { MemberListResolver } from './resolvers/member-list-resolver';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -25,19 +37,31 @@ import { routes } from './router';
     MemberListComponent,
     ListsComponent,
     MessagesComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MemberCardComponent,
+    MemberDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxGalleryModule,
+    TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    JwtModule.forRoot(
+      {
+        config: {
+          tokenGetter: tokenGetter,
+          whitelistedDomains: ["localhost:5000"],
+          blacklistedRoutes: ["localhost:5000/api/auth"],
+        }
+      })
   ],
 
   providers: [
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider, MemberDetailResolver, MemberListResolver
   ],
 
 
