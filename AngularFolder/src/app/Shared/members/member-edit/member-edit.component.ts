@@ -22,16 +22,24 @@ export class MemberEditComponent implements OnInit {
   }
 
   user: User;
+  photoUrl:string;
 
   constructor(private ar: ActivatedRoute, private alertify: AlertifyService, private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.ar.data.subscribe(data => this.user = data['user'])
+    this.authService.currentPhotoUrl.subscribe(photo=>this.photoUrl=photo);
   }
 
   updateUser() {
     this.userService.updateUser(this.authService.decodedToken.nameid, this.user)
-    .subscribe(next => this.editForm.reset(this.user), error => this.alertify.error(error));
+      .subscribe(next => this.editForm.reset(this.user), error => this.alertify.error(error));
+  }
+
+  updateMainPhoto(photoUrl: string) {
+
+    this.user.photoUrl = photoUrl;
+    // this.authService.changeMemberPhoto(photoUrl);
   }
 
 }

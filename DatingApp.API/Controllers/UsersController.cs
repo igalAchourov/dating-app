@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingApp.API.Controllers
 {
     [Authorize]
-
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -39,7 +38,7 @@ namespace DatingApp.API.Controllers
         {
 
             var user = await _repo.GetUser(id);
-            //convert using the mapper from user class to UserForistDto
+            //convert using the mapper from user class to UserForListDto
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
             return Ok(userToReturn);

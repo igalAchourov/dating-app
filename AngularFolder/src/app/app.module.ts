@@ -25,6 +25,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MemberEditComponent } from './Shared/members/member-edit/member-edit.component';
 import { MemberEditResolver } from './resolvers/member-edit-resolver';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './Shared/members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 export function tokenGetter() {
@@ -43,13 +45,15 @@ export function tokenGetter() {
     PageNotFoundComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    FileUploadModule,
     NgxGalleryModule,
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),

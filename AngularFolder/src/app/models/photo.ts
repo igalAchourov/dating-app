@@ -1,7 +1,7 @@
 import { User } from './user';
 
 export interface Photo {
-    id: string;
+    id: number;
     url: string;
     description: string;
     dateAdded: Date;

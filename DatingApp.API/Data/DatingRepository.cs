@@ -26,17 +26,28 @@ namespace DatingApp.API.Data
             _context.Remove(entity);
         }
 
+        public async Task<Photo> GetMainPhotoForUser(int userId)
+        {
+        return await _context.Photos.Where(u=>u.UserId == userId).FirstOrDefaultAsync(p=>p.IsMain);
+        }
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
-            // var users =(from u in _context.Users join p ) 
+            
             return user;
 
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(u=> u.Photos).ToListAsync();
+            var users = await _context.Users.Include(u => u.Photos).ToListAsync();
 
             return users;
         }
@@ -46,5 +57,9 @@ namespace DatingApp.API.Data
         {
             return await _context.SaveChangesAsync() > 0;
         }
+
+
+
+
     }
 }
