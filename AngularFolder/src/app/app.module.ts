@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './Shared/nav/nav.component';
 import { HomeComponent } from './Shared/home/home.component';
 import { RegisterComponent } from './Shared/register/register.component'
@@ -27,7 +27,7 @@ import { MemberEditResolver } from './resolvers/member-edit-resolver';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './Shared/members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -54,7 +54,9 @@ export function tokenGetter() {
     FormsModule,
     BrowserAnimationsModule,
     FileUploadModule,
+    ReactiveFormsModule,
     NgxGalleryModule,
+    BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(routes),
