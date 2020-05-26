@@ -6,11 +6,12 @@ import { ListsComponent } from './Shared/lists/lists.component'
 import { PageNotFoundComponent } from './Shared/page-not-found/page-not-found.component'
 import { AuthGuard } from './guards/auth.guard'
 import { MemberDetailComponent } from './Shared/members/member-detail/member-detail.component'
-import { MemberDetailResolver } from './resolvers/member-detail-resolver'
-import { MemberListResolver } from './resolvers/member-list-resolver'
+import { MemberDetailResolver } from './resolvers/member-detail.resolver'
+import { MemberListResolver } from './resolvers/member-list.resolver'
 import { MemberEditComponent } from './Shared/members/member-edit/member-edit.component'
-import { MemberEditResolver } from './resolvers/member-edit-resolver'
+import { MemberEditResolver } from './resolvers/member-edit.resolver'
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard'
+import { ListsResolver } from './resolvers/lists.resolver'
 
 
 export const routes: Routes = [
@@ -25,9 +26,9 @@ export const routes: Routes = [
             /*you can use single "canActivate" for each route also canActivate:[AuthGuard]*/
             { path: 'members', component: MemberListComponent, resolve: { users: MemberListResolver } },
             { path: 'members/:id', component: MemberDetailComponent, resolve: { user: MemberDetailResolver } },
-            { path: 'member/edit', component: MemberEditComponent, resolve: { user: MemberEditResolver } ,canDeactivate:[PreventUnsavedChanges]},
+            { path: 'member/edit', component: MemberEditComponent, resolve: { user: MemberEditResolver }, canDeactivate: [PreventUnsavedChanges] },
             { path: 'messages', component: MessagesComponent },
-            { path: 'lists', component: ListsComponent },
+            { path: 'lists', component: ListsComponent, resolve: { users: ListsResolver } },
 
         ]
     },

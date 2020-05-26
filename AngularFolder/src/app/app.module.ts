@@ -19,17 +19,18 @@ import { routes } from './router';
 import { MemberCardComponent } from './Shared/members/member-card/member-card.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailComponent } from './Shared/members/member-detail/member-detail.component';
-import { MemberDetailResolver } from './resolvers/member-detail-resolver';
-import { MemberListResolver } from './resolvers/member-list-resolver';
+import { MemberDetailResolver } from './resolvers/member-detail.resolver';
+import { MemberListResolver } from './resolvers/member-list.resolver';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MemberEditComponent } from './Shared/members/member-edit/member-edit.component';
-import { MemberEditResolver } from './resolvers/member-edit-resolver';
+import { MemberEditResolver } from './resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './Shared/members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ListsResolver } from './resolvers/lists.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -79,6 +80,7 @@ export function tokenGetter() {
      MemberDetailResolver, 
      MemberListResolver,
      MemberEditResolver,
+     ListsResolver,
      PreventUnsavedChanges
   ],
 
