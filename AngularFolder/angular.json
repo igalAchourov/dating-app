@@ -28,13 +28,14 @@
               "src/assets"
             ],
             "styles": [
-              {
-                "input":"node_modules/bootstrap/dist/css/bootstrap.min.css"
-              }
-              ,
+          
               {
                 "input":"src/styles.scss"
-              }
+              },
+              {
+                "input":"node_modules/bootswatch/dist/united/bootstrap.min.css"
+              }            
+                          
               
             ],
             "scripts": []

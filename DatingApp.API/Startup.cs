@@ -27,24 +27,9 @@ namespace DatingApp.API
 
         public IConfiguration Configuration { get; }
 
-
-        public void ConfigureDevelopmentServices(IServiceCollection services)
-        {
-            services.AddDbContext<DataContext>(data => data.UseSqlite(Configuration.GetConnectionString("MyConnectionString")));
-
-            ConfigureServices(services);
-        }
-
-         public void ConfigureProductionServices(IServiceCollection services)
-        {
-            services.AddDbContext<DataContext>(data => data.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
-
-            ConfigureServices(services);
-        }
-
-
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(data => data.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
