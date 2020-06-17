@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>8d80c924-edb5-4e1d-9021-6cdc28200b88</UserSecretsId>
+    
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.0"/>
@@ -17,3 +18,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0"/>
   </ItemGroup>
 </Project>
+
+
+
+
