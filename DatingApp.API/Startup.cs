@@ -32,6 +32,7 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(data => data.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
             services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddCors();
+            
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             //add the auto mapper and init by specifing his assembly location
             services.AddAutoMapper(typeof(DatingRepository).Assembly);

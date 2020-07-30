@@ -20,7 +20,7 @@ namespace DatingApp.API.Data
         public async Task<User> Login(string username, string password)
         {
 
-            var user = await _context.Users.Include(u=>u.Photos).FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await _context.Users.Include(u => u.Photos).FirstOrDefaultAsync(x => x.UserName == username);
             if (user == null)
             {
                 return null;
@@ -34,6 +34,26 @@ namespace DatingApp.API.Data
 
 
         }
+
+
+
+        public async Task<User> Register(User user, string password)
+        {
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            return user;
+
+        }
+
+
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
@@ -54,23 +74,6 @@ namespace DatingApp.API.Data
 
 
         }
-
-        public async Task<User> Register(User user, string password)
-        {
-
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
-
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-
-            return user;
-
-        }
-
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

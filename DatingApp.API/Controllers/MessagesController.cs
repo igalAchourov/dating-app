@@ -119,7 +119,7 @@ namespace DatingApp.API.Controllers
                 //the parameters of the CreateAtRoute are the parameters we use in the GetMessage
                 return CreatedAtRoute("GetMessage", new { userId, id = message.Id }, messageToReturn);
             }
-            throw new Exception("Crating the message failed on save");
+            throw new Exception("Creating the message failed on save");
 
         }
 
