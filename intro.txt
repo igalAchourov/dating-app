@@ -1,12 +1,12 @@
 Hi my name is Igal Achourov and this is my dating web site.
 
-The client side developed using angular 8 ,the server developed using ASP.NET core V3.1.0 ,
-data base used SQlite for development and SQl server for production.
+This application developed using Angular 8, ASP.NET core 3, and Sql server.
 
-User credentials for login
-User name:hyde
-Password:password
+Run `dotnet run` for a dev server inside `DatingApp.API`. Navigate to `http://localhost:5000/`.
+
+
+Login credentials: 
+User name=hyde
+Password=password
 
 or you can creat your own user :)
-
-Enjoy!
